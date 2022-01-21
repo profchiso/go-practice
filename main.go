@@ -4,13 +4,13 @@ import "fmt"
 
 func main() {
 	fmt.Println("its a go")
-	sum := add(8, 8)
+	sum := Add(8, 8)
 	fmt.Println("sum =", sum)
 	result := printOddNumbers([]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11})
 	fmt.Println(result)
 }
 
-func add(a int, b int) int {
+func Add(a int, b int) int {
 	return a + b
 }
 func printOddNumbers(a []int) []int {

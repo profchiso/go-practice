@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 func main() {
 	sum := add(1, 9)
@@ -31,5 +34,9 @@ func findAvg(a []int) float32 {
 		fmt.Println(i)
 		sum = sum + e
 	}
+	c := "100"
+	d, e := strconv.Atoi(c)
+	fmt.Println("converted", d, e)
+
 	return float32(sum) / float32(arrLen)
 }

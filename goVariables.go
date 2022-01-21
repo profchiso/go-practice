@@ -18,4 +18,5 @@ func main() {
 	fmt.Println("the type of name height", reflect.TypeOf(height))
 	fmt.Println("the type of name hobbies", reflect.TypeOf(hobbies))
 	fmt.Println("the type of name favNumbers", reflect.TypeOf(favNumbers))
+
 }
