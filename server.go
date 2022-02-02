@@ -5,13 +5,15 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 type User struct {
-	name      string
-	age       int
-	gender    string
-	isMarried bool
+	name      string `json:"name"`
+	age       int    `json:"age"`
+	gender    string `json:"gender"`
+	isMarried bool   `json:"isMarried"`
 }
 
 var Users []User
@@ -20,6 +22,7 @@ func main() {
 	Users = []User{
 		{name: "chinedu", age: 24, gender: "male", isMarried: true},
 		{name: "chinedu", age: 24, gender: "male", isMarried: true},
+		{},
 	}
 	fmt.Println(Users)
 	handleRequest()
@@ -35,7 +38,9 @@ func getAllUsers(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(Users)
 }
 func handleRequest() {
-	http.HandleFunc("/", homePage)
-	http.HandleFunc("/users", getAllUsers)
-	log.Fatal(http.ListenAndServe(":5001", nil))
+	myRouter := mux.NewRouter().StrictSlash(true)
+	myRouter.HandleFunc("/", homePage)
+	myRouter.HandleFunc("/users", getAllUsers)
+
+	log.Fatal(http.ListenAndServe(":5001", myRouter))
 }
